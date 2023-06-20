@@ -23,7 +23,7 @@ docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
 ## To run
 
 ```
-docker run --name drupal -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
+docker run --rm --name drupal -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
 ```
 
 ## Test
