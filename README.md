@@ -10,11 +10,11 @@ See: http://supervisord.org for more info.
 
 For this use case, we won't restart either php-fpm or apache upon failure. Instead, we will rely on a container orchestrator to restart the container based on a health-check call to `/xx-fpm.ping` which will fail if either apache or php-fpm fail.
 
-View the Dockerfile / config files for more details.
+View the Dockerfile / config files for more details. We'll be using an official Drupal container image (`drupal:10.0.9-php8.2-fpm-bullseye` at the time of writing) as our base image.
 
 ## To build
 
-Example using the version at time of commit:
+Example using the version at time of writing:
 
 ```
 docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
