@@ -29,5 +29,6 @@ docker run --rm --name drupal -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-b
 ## Test
 
 - Open http://localhost:8080/xx-info.php (php info)
-- Open http://localhost:8080/xx-fpm.ping (health-check)
+- Open http://localhost:8080/xx-fpm.ping (fpm health-check)
+- Open http://localhost:8080/xx-fpm.status (fpm status)
 - Open http://localhost:8080/ (drupal site install)
