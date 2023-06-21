@@ -10,26 +10,26 @@ See: http://supervisord.org for more info.
 
 For this use case, we won't restart either php-fpm or apache upon failure. Instead, we will rely on a container orchestrator to restart the container based on a health-check call to `/xx-fpm.ping` which will fail if either apache or php-fpm fail.
 
-View the Dockerfile / config files for more details. We'll be using an official Drupal container image (`drupal:10.0.9-php8.2-fpm-bullseye` at the time of writing) as our base image.
+View the Dockerfile / config files for more details. We'll be using an official Drupal container image (`drupal:10-php8.2-fpm-bullseye` at the time of writing) as our base image.
 
 ## To build
 
 Example using the version at time of writing:
 
 ```
-docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
+docker build -t customdrupal:10-php8.2-apache-fpm-bullseye .
 ```
 
 ## To run
 
 ```
-docker run --rm --name drupal -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
+docker run --rm --name drupal -p 8080:80 customdrupal:10-php8.2-apache-fpm-bullseye
 ```
 
 You can override any of the environment variables in the Dockerfile. e.g. to enable the php-fpm slow log and set it to 1 second:
 
 ```
-docker run --rm --name drupal -e PHP_fpm_request_slowlog_timeout=1 -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
+docker run --rm --name drupal -e PHP_fpm_request_slowlog_timeout=1 -p 8080:80 customdrupal:10-php8.2-apache-fpm-bullseye
 ```
 
 ## Test

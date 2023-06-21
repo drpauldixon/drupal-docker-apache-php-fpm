@@ -1,5 +1,5 @@
 # docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
-FROM drupal:10.0.9-php8.2-fpm-bullseye
+FROM drupal:10-php8.2-fpm-bullseye
 
 RUN apt-get update && apt-get install -y \
     apache2 \
