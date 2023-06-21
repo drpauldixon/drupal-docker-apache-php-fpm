@@ -26,6 +26,12 @@ docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
 docker run --rm --name drupal -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
 ```
 
+You can override any of the environment variables in the Dockerfile. e.g. to enable the php-fpm slow log and set it to 1 second:
+
+```
+docker run --rm --name drupal -e PHP_fpm_request_slowlog_timeout=1 -p 8080:80 customdrupal:10.0.9-php8.2-apache-fpm-bullseye
+```
+
 ## Test
 
 - Open http://localhost:8080/xx-info.php (php info)
