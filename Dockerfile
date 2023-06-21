@@ -1,15 +1,6 @@
 # docker build -t customdrupal:10.0.9-php8.2-apache-fpm-bullseye .
 FROM drupal:10.0.9-php8.2-fpm-bullseye
 
-# Environment variables that can be overridden at run time
-ENV APACHE_START_SERVERS=2
-ENV APACHE_MIN_SPARE_THREADS=25
-ENV APACHE_MAX_SPARE_THREADS=75
-ENV APACHE_THREAD_LIMIT=64
-ENV APACHE_THREADS_PER_CHILD=25
-ENV APACHE_MAX_REQUEST_WORKERS=150
-ENV APACHE_MAX_CONNECTIONS_PER_CHILD=0
-
 RUN apt-get update && apt-get install -y \
     apache2 \
     supervisor \
@@ -28,6 +19,15 @@ COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
 COPY supervisor/apache2.conf /etc/supervisor/conf.d/apache2.conf
 COPY php/xx-info.php /opt/drupal/web/xx-info.php
+
+# Environment variables that can be overridden at run time
+ENV APACHE_mpm_event_start_servers=2 \
+    APACHE_mpm_event_min_spare_threads=25 \
+    APACHE_mpm_event_max_spare_threads=75 \
+    APACHE_mpm_event_thread_limit=64 \
+    APACHE_mpm_event_threads_per_child=25 \
+    APACHE_mpm_event_max_request_workers=150 \
+    APACHE_mpm_event_max_connections_per_child=0
 
 EXPOSE 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
