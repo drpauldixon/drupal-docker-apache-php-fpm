@@ -35,6 +35,6 @@ docker run --rm --name drupal -e PHP_fpm_request_slowlog_timeout=1 -p 8080:80 cu
 ## Test
 
 - Open http://localhost:8080/xx-info.php (php info)
-- Open http://localhost:8080/xx-fpm.ping (fpm health-check)
+- Open http://localhost:8080/xx-fpm.ping (health-check)
 - Open http://localhost:8080/xx-fpm.status (fpm status)
 - Open http://localhost:8080/ (drupal site install)
